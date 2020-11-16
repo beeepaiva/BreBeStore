@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "297936231800",
+    "firebase_url": "https://brebestore-ebbd1.firebaseio.com",
+    "project_id": "brebestore-ebbd1",
+    "storage_bucket": "brebestore-ebbd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297936231800:android:a2e896ef83ff2b6f55bc8d",
+        "android_client_info": {
+          "package_name": "bt.senacbcc.brebestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297936231800-0eckfg804mt14fsdujd4mh05a1eutmd0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bt.senacbcc.brebestore",
+            "certificate_hash": "9942a3becf20df56fba9666fd35f4c2989804b5d"
+          }
+        },
+        {
+          "client_id": "297936231800-llnead8p185vnvkk30utlujorch25hka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsPhY0UXBayuZC6Z6s9tjFaYiRlC5a298"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297936231800-llnead8p185vnvkk30utlujorch25hka.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
