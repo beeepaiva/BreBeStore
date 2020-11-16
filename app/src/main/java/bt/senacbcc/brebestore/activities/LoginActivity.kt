@@ -1,7 +1,8 @@
-package bt.senacbcc.brebestore
+package bt.senacbcc.brebestore.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import bt.senacbcc.brebestore.R
 import com.google.firebase.auth.FirebaseAuth
 
 
