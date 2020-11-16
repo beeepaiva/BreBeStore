@@ -9,4 +9,14 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="languages">
+        <item>@string/ptBr</item>
+        <item>@string/enUs</item>
+    </string-array>
+
+    <string-array name="themes">
+        <item>@string/lightTheme</item>
+        <item>@string/darkTheme</item>
+    </string-array>
 </resources>
