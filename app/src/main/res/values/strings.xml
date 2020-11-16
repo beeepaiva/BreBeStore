@@ -19,6 +19,8 @@
     <string name="languageChoice">Escolha a linguagem:</string>
     <string name="ptBr">Portugues - Brasil</string>
     <string name="enUs">Inglês</string>
-
+    
+    <string name="logout">Sair</string>
+    <string name="purshasedHistory">Histórico de compras</string>
 
 </resources>

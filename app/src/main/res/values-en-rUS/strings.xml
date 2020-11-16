@@ -19,4 +19,7 @@
     <string name="languageChoice">Choose the language::</string>
     <string name="ptBr">Portuguese - Brazil</string>
     <string name="enUs">English</string>
+
+    <string name="logout">Lougout</string>
+    <string name="purshasedHistory">Purchased History</string>
 </resources>
