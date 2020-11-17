@@ -1,19 +1,73 @@
 package bt.senacbcc.brebestore.activities
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import bt.senacbcc.brebestore.R
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 
-
-private var mAuth: FirebaseAuth? = null
-
 class LoginActivity : AppCompatActivity() {
+
+    private val RC_SIGN_IN = 123
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+        val auth = FirebaseAuth.getInstance()
+
+        if (auth.currentUser != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "Usuario logado como " + auth.currentUser?.displayName, Toast.LENGTH_LONG).show()
+        }else{
+            createSignInIntent()
+        }
+
     }
+
+    private fun createSignInIntent() {
+        // Choose authentication providers
+        val providers = arrayListOf(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build())
+
+        // Create and launch sign-in intent
+        startActivityForResult(
+            AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(providers)
+                .setLogo(R.mipmap.ic_brebe_foreground)
+                .build(),
+            RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            val response = IdpResponse.fromResultIntent(data)
+            if (resultCode == Activity.RESULT_OK) {
+                // Successfully signed in
+                val user = FirebaseAuth.getInstance().currentUser
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Usuario logado como: " + user?.displayName, Toast.LENGTH_LONG)
+                    .show()
+            } else {
+                Toast.makeText(this, "Erro ao logar", Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }
+    }
+
+
 }
+

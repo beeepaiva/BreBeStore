@@ -26,12 +26,11 @@ class ProfileActivity : AppCompatActivity() {
 
             txtName.setText(name)
             txtEmail.setText(email)
-            imgProfile.setImageURI(photoUrl)
         }
 
         btnLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut();
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 

@@ -23,4 +23,9 @@
     <string name="logout">Sair</string>
     <string name="purshasedHistory">Histórico de compras</string>
 
+    <string name="welcome">Seja bem-vindo</string>
+    <string name="storeName"> BreBe Modas</string>
+    <string name="login">Entrar</string>
+    <string name="signon">Cadastrar</string>
+
 </resources>

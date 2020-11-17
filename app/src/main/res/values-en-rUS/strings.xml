@@ -22,4 +22,7 @@
 
     <string name="logout">Lougout</string>
     <string name="purshasedHistory">Purchased History</string>
+
+    <string name="welcome">Welcome!</string>
+    <string name="storeName"> BreBe Modas</string>
 </resources>
