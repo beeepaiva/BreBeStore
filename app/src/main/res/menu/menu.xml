@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/cart"
-        android:title="@string/cart"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_round_shopping_cart_24"
-        />
-    <item android:id="@+id/profile"
-        android:title="@string/profile"
-        android:icon="@drawable/ic_round_account_circle_24"
-        app:showAsAction="always"
-        />
-    <item
-        android:id="@+id/about"
-        android:title="@string/about"
-        android:icon="@drawable/ic_round_info_24"
-        app:showAsAction="ifRoom"
-        />
-    <item
-        android:id="@+id/settings"
-        android:title="@string/settings"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_round_settings_24"
-        />
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/round_home_black_48"
+            android:title="@string/home"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/cart"
+            android:icon="@drawable/ic_round_shopping_cart_24"
+            android:title="@string/cart"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_round_account_circle_24"
+            android:title="@string/profile"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_round_info_24"
+            android:title="@string/about"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_round_settings_24"
+            android:title="@string/settings"
+            app:showAsAction="ifRoom" />
+    </group>
 
 </menu>

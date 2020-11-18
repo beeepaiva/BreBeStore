@@ -3,6 +3,7 @@
     <string name="about">Sobre</string>
     <string name="settings">Configurações</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="home">Página Inicial</string>
     <string name="cart">Carrinho</string>
     <string name="profile">"Perfil "</string>
     <string name="products">Produtos</string>
@@ -19,7 +20,7 @@
     <string name="languageChoice">Escolha a linguagem:</string>
     <string name="ptBr">Portugues - Brasil</string>
     <string name="enUs">Inglês</string>
-    
+
     <string name="logout">Sair</string>
     <string name="purshasedHistory">Histórico de compras</string>
 
@@ -27,5 +28,10 @@
     <string name="storeName"> BreBe Modas</string>
     <string name="login">Entrar</string>
     <string name="signon">Cadastrar</string>
+
+    <string name="open_menu">Abrir Menu</string>
+    <string name="close_menu">Fechar Menu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

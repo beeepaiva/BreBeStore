@@ -4,6 +4,7 @@
     <string name="about">Sobre</string>
     <string name="settings">Configurações</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="home">Página Inicial</string>
     <string name="cart">Carrinho</string>
     <string name="profile">"Perfil "</string>
     <string name="products">Produtos</string>
@@ -26,5 +27,7 @@
 
     <string name="welcome">Seja bem-vindo</string>
     <string name="storeName"> BreBe Modas</string>
+    <string name="login">Entrar</string>
+    <string name="signon">Cadastrar</string>
 
 </resources>

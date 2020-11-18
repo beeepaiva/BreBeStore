@@ -4,6 +4,7 @@
     <string name="about">About</string>
     <string name="settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="home">Home</string>
     <string name="cart">Cart</string>
     <string name="products">Products</string>
     <string name="aboutAPP">This app was developed for Mobile App Development subject, to BCC Senac 6º Semester.</string>
@@ -25,4 +26,6 @@
 
     <string name="welcome">Welcome!</string>
     <string name="storeName"> BreBe Modas</string>
+    <string name="login">Login</string>
+    <string name="signon">Sign On</string>
 </resources>

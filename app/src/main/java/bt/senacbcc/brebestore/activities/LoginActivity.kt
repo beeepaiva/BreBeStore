@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import bt.senacbcc.brebestore.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -23,7 +26,8 @@ class LoginActivity : AppCompatActivity() {
         if (auth.currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            Toast.makeText(this, "Usuario logado como " + auth.currentUser?.displayName, Toast.LENGTH_LONG).show()
+
+            //Toast.makeText(this, "Usuario logado como " + auth.currentUser?.displayName, Toast.LENGTH_LONG).show()
         }else{
             createSignInIntent()
         }

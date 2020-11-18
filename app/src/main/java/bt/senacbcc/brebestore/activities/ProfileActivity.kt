@@ -22,7 +22,6 @@ class ProfileActivity : AppCompatActivity() {
             // Name, email address, and profile photo Url
             val name = it.displayName
             val email = it.email
-            val photoUrl = it.photoUrl
 
             txtName.setText(name)
             txtEmail.setText(email)
