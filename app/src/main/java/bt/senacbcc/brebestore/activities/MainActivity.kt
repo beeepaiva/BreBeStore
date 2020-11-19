@@ -1,5 +1,6 @@
 package bt.senacbcc.brebestore.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -13,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_principal.txtNome
 import kotlinx.android.synthetic.main.menu_principal.txtEmail
+import kotlinx.android.synthetic.main.menu_principal.view.*
 
 
 private var mAuth: FirebaseAuth? = null
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val user = FirebaseAuth.getInstance().currentUser
@@ -34,36 +37,16 @@ class MainActivity : AppCompatActivity() {
             // Name, email address
             name = "" + it.displayName
             email = "" + it.email
+
+            val header = navigationView.getHeaderView(0)
+            header.txtNome.text = name
+            header.txtEmail.text = email
+
         }
 
         Snackbar.make(fragContainer, "Usuario logado como " + name, Snackbar.LENGTH_LONG).show()
 
-        /*toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open_menu, R.string.close_menu){
-            override fun onDrawerClosed(view:View){
-                super.onDrawerClosed(view)
-                //toast("Drawer closed")
-            }
-
-            override fun onDrawerOpened(drawerView: View){
-                super.onDrawerOpened(drawerView)
-                txtNome.setText(name)
-                txtEmail.setText(email)
-            }
-        }*/
-
-
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open_menu, R.string.close_menu)
-        /*{
-            override fun onDrawerClosed(view:View){
-                super.onDrawerClosed(view)
-                //toast("Drawer closed")
-            }
-
-            override fun onDrawerOpened(drawerView: View){
-                super.onDrawerOpened(drawerView)
-                //toast("Drawer opened")
-            }*/
-
 
         toggle?.let{
             drawerLayout.addDrawerListener(it)
@@ -75,20 +58,24 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.closeDrawers()
 
             if (it.itemId == R.id.profile) {
-                val frag = HomeFragment()
+                val frag = ProfileActivity()
                 supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
                 true
             }
-            /*else if (it.itemId == R.id.settings) {
-                val intent = Intent(this, SettingsActivity::class.java)
-                startActivity(intent)
+            else if (it.itemId == R.id.settings) {
+                val frag = SettingsActivity()
+                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                true
             }
-            if (it.itemId == R.id.about) {
-                val intent = Intent(this, AboutActivity::class.java)
-                startActivity(intent)
-            }*/
+            else if (it.itemId == R.id.about) {
+                val frag = AboutActivity()
+                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                true
+            }
             false
         }
+
+
     }
 
 

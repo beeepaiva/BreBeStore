@@ -13,12 +13,10 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/theme">
 
-        <ListPreference
+        <SwitchPreference
             android:defaultValue="false"
-            android:entries="@array/themes"
-            android:entryValues="@array/themes"
-            android:key="lpTheme"
-            android:title="@string/themeChoice" />
+            android:key="dark_theme_switch"
+            android:title="@string/darkTheme" />
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -26,8 +26,6 @@ class LoginActivity : AppCompatActivity() {
         if (auth.currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-
-            //Toast.makeText(this, "Usuario logado como " + auth.currentUser?.displayName, Toast.LENGTH_LONG).show()
         }else{
             createSignInIntent()
         }
@@ -60,14 +58,11 @@ class LoginActivity : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(data)
             if (resultCode == Activity.RESULT_OK) {
                 // Successfully signed in
-                val user = FirebaseAuth.getInstance().currentUser
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                Toast.makeText(this, "Usuario logado como: " + user?.displayName, Toast.LENGTH_LONG)
-                    .show()
+                //Toast.makeText(this, "Usuario logado como: " + user?.displayName, Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Erro ao logar", Toast.LENGTH_LONG).show()
-                finish()
             }
         }
     }
