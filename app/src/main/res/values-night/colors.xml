@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#7C42CF</color>
+    <color name="colorPrimaryDark">#6131CD</color>
+    <color name="colorAccent">#EA4C41</color>
+
+    <color name="purple_500">#3700b3</color> <!--Color primary variant (light)-->
+    <color name="purple_600">#bb86fc</color> <!--Color primary (dark)-->
+    <color name="red_600">#cf6679</color> <!--Color error (dark)-->
+
+
+    <color name="textPrimary">#ffffff</color>
+
+
+</resources>

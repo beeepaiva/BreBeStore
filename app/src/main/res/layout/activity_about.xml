@@ -14,12 +14,13 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="@string/aboutAPP"
+        android:textColor="@color/textPrimary"
         android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/imgSenac"
-        android:layout_width="114dp"
-        android:layout_height="104dp"
+        android:layout_width="168dp"
+        android:layout_height="157dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:adjustViewBounds="false"
@@ -32,6 +33,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="@string/contactUs"
+        android:textColor="@color/textPrimary"
         android:textSize="24sp" />
 
     <LinearLayout
@@ -42,7 +44,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/imgGitHub"
@@ -71,16 +74,17 @@
 
     </LinearLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtGroup"
         android:layout_width="364dp"
         android:layout_height="74dp"
         android:layout_gravity="center"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="40dp"
         android:text="@string/developedBy"
+        android:textColor="@color/textPrimary"
         android:textSize="25sp" />
 
 </LinearLayout>

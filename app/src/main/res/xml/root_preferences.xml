@@ -15,8 +15,12 @@
 
         <SwitchPreference
             android:defaultValue="false"
+            android:id="@+id/dark_theme_switch"
             android:key="dark_theme_switch"
-            android:title="@string/darkTheme" />
+            android:title="@string/darkTheme"/>
+
+
     </PreferenceCategory>
+
 
 </PreferenceScreen>
