@@ -5,10 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import bt.senacbcc.brebestore.R
-import bt.senacbcc.brebestore.views.AboutFragment
-import bt.senacbcc.brebestore.views.HomeFragment
-import bt.senacbcc.brebestore.views.ProfileActivity
-import bt.senacbcc.brebestore.views.SettingsFragment
+import bt.senacbcc.brebestore.views.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,6 +40,11 @@ class MainActivity : AppCompatActivity() {
 
             if(it.itemId == R.id.home){
                 val frag = HomeFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                true
+            }
+            else if(it.itemId == R.id.cart){
+                val frag = CartFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
                 true
             }

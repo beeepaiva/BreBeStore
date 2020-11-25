@@ -29,10 +29,11 @@ class HomeFragment : Fragment() {
     private var mStorageRef: StorageReference? = null
 
     companion object {
-        private const val TAG = "KotlinActivity"
+        private const val TAG = "HomeFragment"
     }
     lateinit var storage: FirebaseStorage
     var db = FirebaseFirestore.getInstance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,7 +66,7 @@ class HomeFragment : Fragment() {
         productsRef.whereArrayContains("categoria", type).get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-
+                    productContainer.removeAllViews()
                     updateUI(document.data)
                 }
             }
@@ -83,7 +84,7 @@ class HomeFragment : Fragment() {
         productsRef.whereEqualTo("nome", busca.toString()).get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-
+                    productContainer.removeAllViews()
                     updateUI(document.data)
 
                 }
@@ -165,8 +166,6 @@ class HomeFragment : Fragment() {
 
     fun updateUI(productMap: Map<String, Any>){
 
-        productContainer.removeAllViews()
-
         val productData = productMap
         val card = layoutInflater.inflate(
             R.layout.card_product,
@@ -179,26 +178,38 @@ class HomeFragment : Fragment() {
         val imgStream = productData["urlImg"].toString()
 
         card.btnBuy.setOnClickListener(buyItem(productData))
-        productContainer.addView(card)
         card.setOnClickListener(clickInCard(productData));
+        productContainer.addView(card)
 
     }
+
+    //Item vai direto pro carrinho
     private fun buyItem(selectedProduct: Map<String, Any>): View.OnClickListener? {
         return View.OnClickListener { v ->
-            val db = Room.databaseBuilder(v.context, AppDatabase::class.java, "AppDB").build()
-            var produtoSelecionado =
-                Product(name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["price"].toString().toFloat(), id = 1, qtd =1, urlImg = "")
+            Thread{
 
-            db.productDao().insert(produtoSelecionado)
+            val produtoSelecionado =
+                Product(name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["preco"].toString().toFloat(), qtd = 1, urlImg = "", id = 6)
+                insertProduct(produtoSelecionado)
+        }.start()
         }
     }
 
-
+    //Tela de detalhes do item
     private fun clickInCard(selectedProduct: Map<String, Any>): View.OnClickListener? {
         return View.OnClickListener { v ->
-            val i = Intent(activity, CartFragment::class.java)
+            val frag = DetailsFragment()
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.productContainer, frag)?.commit()
+            //val i = Intent(activity, DetailsFragment::class.java)
             //i.putExtra("produto", selectedProduct)
-            startActivity(i)
+            //startActivity(i)
+        }
+    }
+
+    fun insertProduct(product: Product){
+        activity?.let{
+        val roomdb = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
+        roomdb.productDao().insert(product)
         }
     }
 

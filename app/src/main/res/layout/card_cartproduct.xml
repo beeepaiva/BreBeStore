@@ -40,15 +40,18 @@
                 android:id="@+id/card_titleDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/app_name"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="@color/material_on_surface_emphasis_high_type"
                 app:firstBaselineToTopHeight="40dp"
-                tools:layout_editor_absoluteX="136dp"
-                tools:layout_editor_absoluteY="25dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/card_header"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/card_body"
+                android:id="@+id/card_bodyDetails"
                 android:layout_width="178dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="12dp"
@@ -63,7 +66,7 @@
                 app:layout_constraintTop_toBottomOf="@id/card_titleDetails" />
 
             <Button
-                android:id="@+id/btnBuy"
+                android:id="@+id/btnRemoveItem"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="114dp"
                 android:layout_height="40dp"
@@ -73,7 +76,7 @@
                 android:text="@string/app_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_body"
+                app:layout_constraintTop_toBottomOf="@id/card_bodyDetails"
                 app:layout_constraintVertical_bias="0.666" />
 
             <Button
@@ -88,8 +91,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@id/btnBuy"
-                app:layout_constraintTop_toBottomOf="@id/card_body"
+                app:layout_constraintStart_toEndOf="@id/btnRemoveItem"
+                app:layout_constraintTop_toBottomOf="@id/card_bodyDetails"
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

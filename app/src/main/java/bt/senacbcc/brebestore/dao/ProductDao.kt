@@ -6,7 +6,7 @@ import bt.senacbcc.brebestore.model.Product
 @Dao
 interface ProductDao {
 
-    @Query("SELECT * FROM product")
+    @Query("SELECT * FROM Product")
     fun getAll(): List<Product>
 
     @Insert()
