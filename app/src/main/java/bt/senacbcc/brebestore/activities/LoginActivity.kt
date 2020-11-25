@@ -1,4 +1,4 @@
-package bt.senacbcc.brebestore.activities
+package bt.senacbcc.brebestore.views
 
 import android.app.Activity
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import bt.senacbcc.brebestore.R
+import bt.senacbcc.brebestore.activities.MainActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
         if (auth.currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
+            Toast.makeText(this, "Usuario logado como " + auth.currentUser?.displayName, Toast.LENGTH_LONG).show()
             startActivity(intent)
         }else{
             createSignInIntent()
@@ -57,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
                 // Successfully signed in
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                //Toast.makeText(this, "Usuario logado como: " + user?.displayName, Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Usuario logado como: " + auth.currentUser.displayName, Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Erro ao logar", Toast.LENGTH_LONG).show()
             }

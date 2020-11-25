@@ -1,4 +1,4 @@
-package bt.senacbcc.brebestore.activities
+package bt.senacbcc.brebestore.views
 
 import android.content.Intent
 import android.net.Uri

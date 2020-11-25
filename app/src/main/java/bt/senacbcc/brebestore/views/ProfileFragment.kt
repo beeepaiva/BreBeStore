@@ -1,22 +1,16 @@
-package bt.senacbcc.brebestore.activities
+package bt.senacbcc.brebestore.views
 
-import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import bt.senacbcc.brebestore.R
+import bt.senacbcc.brebestore.activities.LoginActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_profile.view.*
 
 private var mAuth: FirebaseAuth? = null
