@@ -19,14 +19,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/card_header"
-                android:layout_width="match_parent"
-                android:layout_height="192dp"
+                android:layout_width="134dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="4dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_brebe_background"
@@ -35,47 +37,60 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/card_title"
+                android:id="@+id/card_titleDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/product"
+                android:text="@string/app_name"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="@color/material_on_surface_emphasis_high_type"
                 app:firstBaselineToTopHeight="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.052"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_header" />
+                tools:layout_editor_absoluteX="136dp"
+                tools:layout_editor_absoluteY="25dp" />
 
             <TextView
                 android:id="@+id/card_body"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/keyline_4"
+                android:layout_width="178dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="@dimen/keyline_5"
-                android:text="@string/price"
+                android:text="@string/app_name"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/material_on_surface_emphasis_medium"
                 app:firstBaselineToTopHeight="@dimen/keyline_5"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_title" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/card_header"
+                app:layout_constraintTop_toBottomOf="@id/card_titleDetails" />
 
             <Button
                 android:id="@+id/btnBuy"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="114dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="148dp"
                 android:layout_marginTop="@dimen/keyline_5"
                 android:layout_marginBottom="@dimen/keyline_2"
-                android:text="@string/buy"
+                android:text="@string/app_name"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.916"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_body"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.666" />
+
+            <Button
+                android:id="@+id/card_button_two"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="114dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="@dimen/keyline_0"
+                android:layout_marginTop="@dimen/keyline_5"
+                android:layout_marginBottom="@dimen/keyline_2"
+                android:text="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/btnBuy"
+                app:layout_constraintTop_toBottomOf="@id/card_body"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

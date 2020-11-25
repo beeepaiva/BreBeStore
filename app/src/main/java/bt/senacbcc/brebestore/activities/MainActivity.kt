@@ -1,15 +1,16 @@
 package bt.senacbcc.brebestore.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.PreferenceManager
 import bt.senacbcc.brebestore.R
-import com.google.android.material.snackbar.Snackbar
+import bt.senacbcc.brebestore.views.AboutFragment
+import bt.senacbcc.brebestore.views.HomeFragment
+import bt.senacbcc.brebestore.views.ProfileActivity
+import bt.senacbcc.brebestore.views.SettingsFragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_principal.view.*
 
@@ -17,38 +18,19 @@ private var mAuth: FirebaseAuth? = null
 
 class MainActivity : AppCompatActivity() {
     var toggle: ActionBarDrawerToggle? = null
-    var name = ""
-    var email = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val user = FirebaseAuth.getInstance().currentUser
+        val user = getCurrentUser()
 
-        user?.let {
-            // Name, email address
-            name = "" + it.displayName
-            email = "" + it.email
+        val header = navigationView.getHeaderView(0)
+        header.txtNome.text = user?.displayName
+        header.txtEmail.text = user?.email
 
-            val header = navigationView.getHeaderView(0)
-            header.txtNome.text = name
-            header.txtEmail.text = email
-
-        }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
-
-        val themeColor = sharedPrefs.getBoolean("dark_theme_switch", false)
-
-        if (themeColor) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-
-        Snackbar.make(fragContainer, "Usuario logado como " + name, Snackbar.LENGTH_LONG).show()
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open_menu, R.string.close_menu)
         toggle?.let{
@@ -70,17 +52,26 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else if (it.itemId == R.id.settings) {
-                val frag = SettingsActivity()
+                val frag = SettingsFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
                 true
             }
             else if (it.itemId == R.id.about) {
-                val frag = AboutActivity()
+                val frag = AboutFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
                 true
             }
             false
         }
+
+    }
+
+    fun getCurrentUser(): FirebaseUser? {
+        val aut = FirebaseAuth.getInstance()
+        return aut.currentUser
+    }
+
+    fun configDB(){
 
     }
 

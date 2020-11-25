@@ -12,7 +12,7 @@ import bt.senacbcc.brebestore.R
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.activity_about.view.*
 
-class AboutActivity : Fragment() {
+class AboutFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?
     ): View? {

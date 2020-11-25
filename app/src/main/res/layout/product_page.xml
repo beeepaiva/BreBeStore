@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingTop="@dimen/keyline_5"
+    android:paddingBottom="@dimen/keyline_5"
+    android:paddingStart="@dimen/keyline_4"
+    android:paddingEnd="@dimen/keyline_4">
+
+
+            <ImageView
+                android:id="@+id/card_header"
+                android:layout_width="match_parent"
+                android:layout_height="192dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_brebe_background"
+                app:tint="?attr/colorSurface"
+                app:tintMode="multiply"
+                tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/card_titleDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/product"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/material_on_surface_emphasis_high_type"
+        app:firstBaselineToTopHeight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_header" />
+
+    <TextView
+        android:id="@+id/card_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/keyline_4"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/keyline_5"
+        android:text="@string/desc"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@color/material_on_surface_emphasis_medium"
+        app:firstBaselineToTopHeight="@dimen/keyline_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_titleDetails" />
+
+    <TextView
+        android:id="@+id/card_price"
+        android:layout_width="163dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="@dimen/keyline_4"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="@dimen/keyline_5"
+        android:text="@string/price"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@color/material_on_surface_emphasis_medium"
+        app:firstBaselineToTopHeight="@dimen/keyline_5"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_body"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnBuy"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etQtd"
+        android:layout_width="74dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="4dp"
+        android:autoText="false"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="1"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnMenosQtd" />
+
+    <ImageButton
+        android:id="@+id/btnMaisQtd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuy"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/etQtd"
+        app:srcCompat="@drawable/ic_round_add_24" />
+
+    <ImageButton
+        android:id="@+id/btnMenosQtd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_round_remove_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

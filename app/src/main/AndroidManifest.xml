@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp">
-        <activity android:name=".activities.AboutActivity" android:label="@string/about"></activity>
+        <activity android:name=".views.AboutFragment" android:label="@string/about"></activity>
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".views.SettingsFragment"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".activities.ProfileActivity" android:label="@string/profile"/>
+        <activity android:name=".views.ProfileActivity" android:label="@string/profile"/>
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/products">

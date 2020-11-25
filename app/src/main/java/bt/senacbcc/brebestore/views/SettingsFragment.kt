@@ -9,7 +9,7 @@ import androidx.preference.PreferenceFragmentCompat
 import bt.senacbcc.brebestore.R
 
 
-class SettingsActivity : Fragment() {
+class SettingsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

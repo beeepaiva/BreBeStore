@@ -1,4 +1,4 @@
-package bt.senacbcc.brebestore.views
+package bt.senacbcc.brebestore.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import bt.senacbcc.brebestore.R
-import bt.senacbcc.brebestore.activities.MainActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth

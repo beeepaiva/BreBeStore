@@ -5,7 +5,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ProfileActivity">
+    tools:context=".views.ProfileActivity">
 
 
     <FrameLayout
@@ -33,7 +33,7 @@
             android:layout_gravity="end"
             android:elevation="10dp"
             android:src="@drawable/ic_round_edit_24"
-            android:tint="@color/textPrimary" />
+            app:tint="@color/textPrimary" />
 
     </FrameLayout>
 
