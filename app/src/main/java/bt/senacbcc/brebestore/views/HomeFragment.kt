@@ -112,7 +112,7 @@ class HomeFragment : Fragment() {
     }
 
     fun filterProductsByName(){
-        val busca = etSearch.text.toString()
+        val busca = etSearch.text.toString().toLowerCase()
         progressBarProducts.visibility = View.VISIBLE
         //Filtrar produtos
         val productsRef = db.collection("produtos")
@@ -160,7 +160,7 @@ class HomeFragment : Fragment() {
             productContainer,
             false
         )
-        card.card_title.text = productData["nome"].toString()
+        card.card_title.text = productData["nome"].toString().capitalize()
         card.card_body.text = "R$ " + productData["preco"].toString()
 
         val imgUrl = productData["urlImg"].toString()

@@ -53,7 +53,7 @@ class CartFragment : Fragment() {
                 cartContainer,
                 false
             )
-            card.card_titleCart.text = product.name
+            card.card_titleCart.text = product.name.capitalize()
             card.card_bodyCart.text = "R$ " + product.price
 
             val imgUrl = product.urlImg.toString()

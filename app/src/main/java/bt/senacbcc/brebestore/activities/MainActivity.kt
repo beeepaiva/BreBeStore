@@ -77,8 +77,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mostrarPaginaProduto(produto: Map<String, Any>){
-        val frag = DetailsFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.productContainer, frag).commit()
+        //val frag = DetailsFragment()
+        //supportFragmentManager.beginTransaction().replace(R.id.productContainer, frag).commit()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
