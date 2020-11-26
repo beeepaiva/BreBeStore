@@ -24,7 +24,7 @@
         android:layout_width="47dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_round_add_24"
+        android:src="@drawable/ic_round_search_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/etSearch"
@@ -61,9 +61,9 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch"
+        app:layout_constraintTop_toBottomOf="@+id/chip_group_filter"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout

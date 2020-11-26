@@ -66,6 +66,9 @@ class MainActivity : AppCompatActivity() {
             false
         }
 
+        val frag = HomeFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+
     }
 
     fun getCurrentUser(): FirebaseUser? {
@@ -73,8 +76,9 @@ class MainActivity : AppCompatActivity() {
         return aut.currentUser
     }
 
-    fun configDB(){
-
+    fun mostrarPaginaProduto(produto: Map<String, Any>){
+        val frag = DetailsFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.productContainer, frag).commit()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -12,11 +12,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import bt.senacbcc.brebestore.R
+import bt.senacbcc.brebestore.activities.MainActivity
 import bt.senacbcc.brebestore.db.AppDatabase
 import bt.senacbcc.brebestore.model.Product
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_product.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -65,8 +67,8 @@ class HomeFragment : Fragment() {
 
         productsRef.whereArrayContains("categoria", type).get()
             .addOnSuccessListener { documents ->
+                productContainer.removeAllViews()
                 for (document in documents) {
-                    productContainer.removeAllViews()
                     updateUI(document.data)
                 }
             }
@@ -81,10 +83,10 @@ class HomeFragment : Fragment() {
         //Filtrar produtos
         val productsRef = db.collection("produtos")
 
-        productsRef.whereEqualTo("nome", busca.toString()).get()
+        productsRef.whereGreaterThanOrEqualTo("nome", busca.toString()).get()
             .addOnSuccessListener { documents ->
+                productContainer.removeAllViews()
                 for (document in documents) {
-                    productContainer.removeAllViews()
                     updateUI(document.data)
 
                 }
@@ -93,57 +95,7 @@ class HomeFragment : Fragment() {
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
-        /*productsRef
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    for (document in task.result!!) {
-
-                        val card = layoutInflater.inflate(
-                            R.layout.card_product,
-                            productContainer,
-                            false
-                        )
-
-                        val productData = document.data
-                        card.card_title.text = productData["nome"].toString()
-                        card.card_body.text = "R$ " + productData["preco"].toString()
-
-                        val imgStream = productData["urlImg"].toString()
-
-                        productContainer.addView(card)
-                        Log.d(TAG, document.id + " => " + document.data)
-                    }
-                } else {
-                    Log.w(TAG, "Error getting documents.", task.exception)
-                }*/
     }
-
-    //GetProducts from Storage
-    /*    fun getProducts(){
-
-        var storageRef = Firebase.storage.reference
-
-        // imagesRef now points to "images"
-        var imagesRef: StorageReference? = storageRef.child("produtos")
-
-        imagesRef?.listAll()
-                ?.addOnSuccessListener { (items) ->
-                items.forEach { item ->
-                    val card = layoutInflater.inflate(R.layout.card_product, productContainer, false)
-
-                    card.card_title.text = item.name
-                    item.getStream { state, stream ->
-                        card.card_header.setImageBitmap(BitmapFactory.decodeStream(stream))
-                    }
-                    productContainer.addView(card)
-                }
-            }
-            ?.addOnFailureListener {
-                // Uh-oh, an error occurred!
-            }
-
-        }*/
 
     //GetProducts from FireStore
     fun getProducts(){
@@ -175,10 +127,11 @@ class HomeFragment : Fragment() {
         card.card_title.text = productData["nome"].toString()
         card.card_body.text = "R$ " + productData["preco"].toString()
 
-        val imgStream = productData["urlImg"].toString()
+        val imgUrl = productData["urlImg"].toString()
+        Picasso.get().load(imgUrl).into(card.card_header)
 
         card.btnBuy.setOnClickListener(buyItem(productData))
-        card.setOnClickListener(clickInCard(productData));
+        //card.setOnClickListener(clickInCard(productData));
         productContainer.addView(card)
 
     }
@@ -187,9 +140,8 @@ class HomeFragment : Fragment() {
     private fun buyItem(selectedProduct: Map<String, Any>): View.OnClickListener? {
         return View.OnClickListener { v ->
             Thread{
-
             val produtoSelecionado =
-                Product(name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["preco"].toString().toFloat(), qtd = 1, urlImg = "", id = 6)
+                Product(name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["preco"].toString().toFloat(), qtd = 1, urlImg = "")
                 insertProduct(produtoSelecionado)
         }.start()
         }
@@ -198,11 +150,8 @@ class HomeFragment : Fragment() {
     //Tela de detalhes do item
     private fun clickInCard(selectedProduct: Map<String, Any>): View.OnClickListener? {
         return View.OnClickListener { v ->
-            val frag = DetailsFragment()
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.productContainer, frag)?.commit()
-            //val i = Intent(activity, DetailsFragment::class.java)
-            //i.putExtra("produto", selectedProduct)
-            //startActivity(i)
+            val mainAct = activity as MainActivity
+            mainAct.mostrarPaginaProduto(selectedProduct)
         }
     }
 
