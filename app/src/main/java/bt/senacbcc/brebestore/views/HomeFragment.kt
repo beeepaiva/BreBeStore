@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import bt.senacbcc.brebestore.R
@@ -36,6 +37,8 @@ class HomeFragment : Fragment() {
         private const val TAG = "HomeFragment"
     }
     lateinit var storage: FirebaseStorage
+    lateinit var progressBarProducts: ProgressBar
+
     var db = FirebaseFirestore.getInstance()
 
     //Variavel Check Chip Categoria
@@ -48,6 +51,9 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val homeView = inflater.inflate(R.layout.fragment_home, container, false)
+
+        progressBarProducts = homeView.findViewById(R.id.progressBarProducts)
+        progressBarProducts.visibility = View.VISIBLE
 
         getProducts()
 
@@ -72,8 +78,9 @@ class HomeFragment : Fragment() {
 
         //Limpa etBusca p nao tentar fazer dois filtros ao mesmo tempo
         etSearch.setText("")
+        progressBarProducts.visibility = View.VISIBLE
 
-        var arr: MutableList<String> = ArrayList()
+        val arr: MutableList<String> = ArrayList()
         if (catMasc && catFem){
             arr.add("masculino")
             arr.add("feminino")
@@ -97,15 +104,16 @@ class HomeFragment : Fragment() {
                     }
                 }
                 .addOnFailureListener { exception ->
+                    Snackbar.make(coordinatorLayoutProduct, "Erro ao buscar produtos!", Snackbar.LENGTH_LONG).show()
                     Log.w(TAG, "Error getting documents: ", exception)
                 }
         }
-
+        progressBarProducts.visibility = View.GONE
     }
 
     fun filterProductsByName(){
         val busca = etSearch.text.toString()
-
+        progressBarProducts.visibility = View.VISIBLE
         //Filtrar produtos
         val productsRef = db.collection("produtos")
 
@@ -116,8 +124,10 @@ class HomeFragment : Fragment() {
                 for (document in documents) {
                     updateUI(document.data)
                 }
+                progressBarProducts.visibility = View.GONE
             }
             .addOnFailureListener { exception ->
+                Snackbar.make(coordinatorLayoutProduct, "Erro ao buscar produtos!", Snackbar.LENGTH_LONG).show()
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
@@ -126,7 +136,6 @@ class HomeFragment : Fragment() {
     //GetProducts from FireStore
     fun getProducts(){
         val productsRef = db.collection("produtos")
-
         productsRef
             .get()
             .addOnCompleteListener { task ->
@@ -134,9 +143,12 @@ class HomeFragment : Fragment() {
                     for (document in task.result!!) {
                         updateUI(document.data)
                     }
+                    progressBarProducts.visibility = View.GONE
                 } else {
+                    Snackbar.make(coordinatorLayoutProduct, "Erro ao encontrar produtos!", Snackbar.LENGTH_LONG).show()
                     Log.w(TAG, "Error getting documents.", task.exception)
                 }
+
             }
     }
 
