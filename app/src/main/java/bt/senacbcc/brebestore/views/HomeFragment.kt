@@ -70,6 +70,9 @@ class HomeFragment : Fragment() {
     }
     fun filterProductsByCategory(){
 
+        //Limpa etBusca p nao tentar fazer dois filtros ao mesmo tempo
+        etSearch.setText("")
+
         var arr: MutableList<String> = ArrayList()
         if (catMasc && catFem){
             arr.add("masculino")
@@ -79,6 +82,8 @@ class HomeFragment : Fragment() {
         }
         else if(catMasc && !catFem){
             arr.add("masculino")
+        }else{
+            getProducts()
         }
 
         //Filtrar produtos
