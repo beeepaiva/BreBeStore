@@ -10,6 +10,7 @@ import androidx.room.Room
 import bt.senacbcc.brebestore.R
 import bt.senacbcc.brebestore.db.AppDatabase
 import bt.senacbcc.brebestore.model.Product
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_cartproduct.view.*
 import kotlinx.android.synthetic.main.card_product.view.*
 import kotlinx.android.synthetic.main.card_product.view.card_body
@@ -52,10 +53,11 @@ class CartFragment : Fragment() {
                 cartContainer,
                 false
             )
-            card.card_titleDetails.text = product.name
-            card.card_bodyDetails.text = "R$ " + product.price
+            card.card_titleCart.text = product.name
+            card.card_bodyCart.text = "R$ " + product.price
 
-            val imgStream = product.urlImg
+            val imgUrl = product.urlImg.toString()
+            Picasso.get().load(imgUrl).into(card.card_headerCart)
 
             card.btnRemoveItem.setOnClickListener(removeItem(product))
             cartContainer.addView(card)
@@ -68,7 +70,7 @@ class CartFragment : Fragment() {
             val produtoSelecionado =
                 Product(name = product.name, desc = product.desc, price = product.price, id = product.id, qtd =product.qtd?.minus(1), urlImg = "")
             deleteProduct(produtoSelecionado)
-            activity?.finish()
+            refreshProducts()
             }.start()
 
         }

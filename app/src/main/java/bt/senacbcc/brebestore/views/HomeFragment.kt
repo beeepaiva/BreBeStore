@@ -15,10 +15,12 @@ import bt.senacbcc.brebestore.R
 import bt.senacbcc.brebestore.activities.MainActivity
 import bt.senacbcc.brebestore.db.AppDatabase
 import bt.senacbcc.brebestore.model.Product
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_product.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -36,6 +38,9 @@ class HomeFragment : Fragment() {
     lateinit var storage: FirebaseStorage
     var db = FirebaseFirestore.getInstance()
 
+    //Variavel Check Chip Categoria
+    var catFem = false
+    var catMasc = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,44 +56,60 @@ class HomeFragment : Fragment() {
         }
 
         homeView.chip_fem.setOnCheckedChangeListener { buttonView, isChecked ->
-            filterProductsByCategory("feminino")
+            catFem = isChecked
+            filterProductsByCategory()
+
         }
         homeView.chip_masc.setOnCheckedChangeListener { buttonView, isChecked ->
-            filterProductsByCategory("masculino")
+            catMasc = isChecked
+            filterProductsByCategory()
         }
 
         return homeView
 
     }
+    fun filterProductsByCategory(){
 
-    fun filterProductsByCategory(type: String){
+        var arr: MutableList<String> = ArrayList()
+        if (catMasc && catFem){
+            arr.add("masculino")
+            arr.add("feminino")
+        }else if(catFem && !catMasc){
+            arr.add("feminino")
+        }
+        else if(catMasc && !catFem){
+            arr.add("masculino")
+        }
+
         //Filtrar produtos
         val productsRef = db.collection("produtos")
-
-        productsRef.whereArrayContains("categoria", type).get()
-            .addOnSuccessListener { documents ->
-                productContainer.removeAllViews()
-                for (document in documents) {
-                    updateUI(document.data)
+        productContainer.removeAllViews()
+        for (type in arr){
+            productsRef.whereArrayContains("categoria", type).get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        updateUI(document.data)
+                    }
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
-            }
+                .addOnFailureListener { exception ->
+                    Log.w(TAG, "Error getting documents: ", exception)
+                }
+        }
+
     }
 
     fun filterProductsByName(){
-        val busca = etSearch.text
+        val busca = etSearch.text.toString()
 
         //Filtrar produtos
         val productsRef = db.collection("produtos")
 
-        productsRef.whereGreaterThanOrEqualTo("nome", busca.toString()).get()
+        productsRef.orderBy("nome").startAt(busca).endAt(busca + "~")
+            .get()
             .addOnSuccessListener { documents ->
                 productContainer.removeAllViews()
                 for (document in documents) {
                     updateUI(document.data)
-
                 }
             }
             .addOnFailureListener { exception ->
@@ -106,9 +127,7 @@ class HomeFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     for (document in task.result!!) {
-
                         updateUI(document.data)
-
                     }
                 } else {
                     Log.w(TAG, "Error getting documents.", task.exception)
@@ -141,9 +160,9 @@ class HomeFragment : Fragment() {
         return View.OnClickListener { v ->
             Thread{
             val produtoSelecionado =
-                Product(name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["preco"].toString().toFloat(), qtd = 1, urlImg = "")
+                Product(name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["preco"].toString().toFloat(), qtd = 1, urlImg = selectedProduct["urlImg"].toString())
                 insertProduct(produtoSelecionado)
-        }.start()
+            }.start()
         }
     }
 
@@ -159,6 +178,7 @@ class HomeFragment : Fragment() {
         activity?.let{
         val roomdb = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
         roomdb.productDao().insert(product)
+        Snackbar.make(coordinatorLayoutProduct, "Produto adicionado com sucesso ao carrinho!", Snackbar.LENGTH_LONG).show()
         }
     }
 

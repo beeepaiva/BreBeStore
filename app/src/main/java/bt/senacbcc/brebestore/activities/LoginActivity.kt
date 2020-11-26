@@ -20,6 +20,8 @@ class LoginActivity : AppCompatActivity() {
 
         val auth = FirebaseAuth.getInstance()
 
+        application.setTheme(R.style.Theme_MyApp)
+
         if (auth.currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
             Toast.makeText(this, "Usuario logado como " + auth.currentUser?.displayName, Toast.LENGTH_LONG).show()
