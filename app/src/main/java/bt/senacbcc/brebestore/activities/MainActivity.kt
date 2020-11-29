@@ -37,33 +37,37 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener {
             drawerLayout.closeDrawers()
+            
+            when(it.itemId) {
+                R.id.home ->  {
+                    val frag = HomeFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    true
+                }
+                R.id.cart -> {
+                    val frag = CartFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    true
+                }
+                R.id.profile -> {
+                    val frag = ProfileActivity()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    true
+                }
+                R.id.settings -> {
+                    val frag = SettingsFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    true
+                }
+                R.id.about -> {
+                    val frag = AboutFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    true
+                }
+                else ->
+                    false
+            }
 
-            if(it.itemId == R.id.home){
-                val frag = HomeFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            else if(it.itemId == R.id.cart){
-                val frag = CartFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            else if (it.itemId == R.id.profile) {
-                val frag = ProfileActivity()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            else if (it.itemId == R.id.settings) {
-                val frag = SettingsFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            else if (it.itemId == R.id.about) {
-                val frag = AboutFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            false
         }
 
         val frag = HomeFragment()
