@@ -30,4 +30,17 @@
     <string name="login">Entrar</string>
     <string name="signon">Cadastrar</string>
 
+    <string name="open_menu">Abrir Menu</string>
+    <string name="close_menu">Fechar Menu</string>
+
+    <!--Home CARD -->
+    <string name="buy">Comprar</string>
+    <string name="product">Produto</string>
+    <string name="price">Preço</string>
+    <string name="desc">Descrição</string>
+    <string name="feminino">Feminino</string>
+    <string name="masculino">Masculino</string>
+
+    <string name="remove">Remover</string>
+
 </resources>

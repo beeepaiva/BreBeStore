@@ -1,5 +1,6 @@
 package bt.senacbcc.brebestore.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_principal.view.*
+
 
 private var mAuth: FirebaseAuth? = null
 
@@ -53,11 +55,6 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
                 true
             }
-            else if (it.itemId == R.id.settings) {
-                val frag = SettingsFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
             else if (it.itemId == R.id.about) {
                 val frag = AboutFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
@@ -77,8 +74,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mostrarPaginaProduto(produto: Map<String, Any>){
-        //val frag = DetailsFragment()
-        //supportFragmentManager.beginTransaction().replace(R.id.productContainer, frag).commit()
+        val i = Intent(this, ProductPageActivity::class.java)
+        for(prod in produto){
+            i.putExtra(prod.key, prod.value.toString())
+        }
+        startActivity(i)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
