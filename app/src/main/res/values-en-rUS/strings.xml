@@ -7,8 +7,8 @@
     <string name="home">Home</string>
     <string name="cart">Cart</string>
     <string name="products">Products</string>
-    <string name="aboutAPP">This app was developed for Mobile App Development subject, to BCC Senac 6º Semester.</string>
-    <string name="developedBy">Developed by: Beatriz Paiva e Lucas Breur</string>
+    <string name="aboutAPP">This app was developed for the \'Mobile App Development\' course during the 6th semester of the Computer Science bachelor at the Senac University.</string>
+    <string name="developedBy">Developed by: Beatriz Paiva and Lucas Breur</string>
     <string name="contactUs">Contact us</string>
 
     <string name="theme">Theme</string>
@@ -17,15 +17,28 @@
     <string name="lightTheme">Light Theme</string>
 
     <string name="language">Language</string>
-    <string name="languageChoice">Choose the language::</string>
+    <string name="languageChoice">Choose the language:</string>
     <string name="ptBr">Portuguese - Brazil</string>
     <string name="enUs">English</string>
 
-    <string name="logout">Lougout</string>
-    <string name="purshasedHistory">Purchased History</string>
+    <string name="logout">Logout</string>
+    <string name="purshasedHistory">Purchase History</string>
 
     <string name="welcome">Welcome!</string>
     <string name="storeName"> BreBe Modas</string>
     <string name="login">Login</string>
     <string name="signon">Sign On</string>
+
+    <string name="open_menu">Open Menu</string>
+    <string name="close_menu">Close Menu</string>
+
+    <!--Home CARD -->
+    <string name="buy">Add to cart</string>
+    <string name="product">Product</string>
+    <string name="price">Price</string>
+    <string name="desc">Description</string>
+    <string name="feminino">Women</string>
+    <string name="masculino">Men</string>
+
+    <string name="remove">Remove</string>
 </resources>

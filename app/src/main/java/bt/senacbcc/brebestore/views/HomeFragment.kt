@@ -105,7 +105,7 @@ class HomeFragment : Fragment() {
                 }
                 .addOnFailureListener { exception ->
                     Snackbar.make(coordinatorLayoutProduct, "Erro ao buscar produtos!", Snackbar.LENGTH_LONG).show()
-                    Log.w(TAG, "Error getting documents: ", exception)
+                    Log.w(TAG, "Error while fetching: ", exception)
                 }
         }
         progressBarProducts.visibility = View.GONE
@@ -128,7 +128,7 @@ class HomeFragment : Fragment() {
             }
             .addOnFailureListener { exception ->
                 Snackbar.make(coordinatorLayoutProduct, "Erro ao buscar produtos!", Snackbar.LENGTH_LONG).show()
-                Log.w(TAG, "Error getting documents: ", exception)
+                Log.w(TAG, "Error while fetching: ", exception)
             }
 
     }
@@ -145,8 +145,8 @@ class HomeFragment : Fragment() {
                     }
                     progressBarProducts.visibility = View.GONE
                 } else {
-                    Snackbar.make(coordinatorLayoutProduct, "Erro ao encontrar produtos!", Snackbar.LENGTH_LONG).show()
-                    Log.w(TAG, "Error getting documents.", task.exception)
+                    Snackbar.make(coordinatorLayoutProduct, "Erro ao buscar produtos!", Snackbar.LENGTH_LONG).show()
+                    Log.w(TAG, "Error while fetching: ", task.exception)
                 }
 
             }
