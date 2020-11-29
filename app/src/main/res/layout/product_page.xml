@@ -12,7 +12,7 @@
 
 
             <ImageView
-                android:id="@+id/card_header"
+                android:id="@+id/imgProduto"
                 android:layout_width="match_parent"
                 android:layout_height="192dp"
                 android:scaleType="centerCrop"
@@ -25,7 +25,7 @@
                 tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/card_titleDetails"
+        android:id="@+id/nomeProduto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -36,10 +36,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_header" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProduto" />
 
     <TextView
-        android:id="@+id/card_body"
+        android:id="@+id/descProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/keyline_4"
@@ -52,12 +52,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_titleDetails" />
+        app:layout_constraintTop_toBottomOf="@id/nomeProduto" />
 
     <TextView
-        android:id="@+id/card_price"
-        android:layout_width="163dp"
-        android:layout_height="42dp"
+        android:id="@+id/precoProduto"
+        android:layout_width="88dp"
+        android:layout_height="39dp"
         android:layout_marginStart="@dimen/keyline_4"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="@dimen/keyline_5"
@@ -67,9 +67,9 @@
         app:firstBaselineToTopHeight="@dimen/keyline_5"
         app:layout_constraintBottom_toTopOf="@+id/btnBuy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_body"
+        app:layout_constraintTop_toBottomOf="@+id/descProduto"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -86,9 +86,8 @@
         android:layout_width="74dp"
         android:layout_height="39dp"
         android:layout_marginBottom="4dp"
-        android:autoText="false"
         android:ems="10"
-        android:inputType="numberSigned"
+        android:inputType="number"
         android:text="1"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -167,7 +167,7 @@ class HomeFragment : Fragment() {
         Picasso.get().load(imgUrl).into(card.card_header)
 
         card.btnBuy.setOnClickListener(buyItem(productData))
-        //card.setOnClickListener(clickInCard(productData));
+        card.setOnClickListener(clickInCard(productData));
         productContainer.addView(card)
 
     }
@@ -188,6 +188,7 @@ class HomeFragment : Fragment() {
         return View.OnClickListener { v ->
             val mainAct = activity as MainActivity
             mainAct.mostrarPaginaProduto(selectedProduct)
+            activity?.finish()
         }
     }
 

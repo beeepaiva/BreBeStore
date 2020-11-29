@@ -22,11 +22,6 @@
             android:icon="@drawable/ic_round_info_24"
             android:title="@string/about"
             app:showAsAction="ifRoom" />
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/ic_round_settings_24"
-            android:title="@string/settings"
-            app:showAsAction="ifRoom" />
     </group>
 
 </menu>

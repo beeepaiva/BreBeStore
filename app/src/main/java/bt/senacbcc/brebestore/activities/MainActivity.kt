@@ -1,5 +1,6 @@
 package bt.senacbcc.brebestore.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_principal.view.*
+
 
 private var mAuth: FirebaseAuth? = null
 
@@ -37,42 +39,39 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener {
             drawerLayout.closeDrawers()
-            
-            when(it.itemId) {
-                R.id.home ->  {
+
+            when (it.itemId) {
+                R.id.home -> {
                     val frag = HomeFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
                     true
                 }
                 R.id.cart -> {
                     val frag = CartFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
                     true
                 }
                 R.id.profile -> {
                     val frag = ProfileActivity()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                    true
-                }
-                R.id.settings -> {
-                    val frag = SettingsFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
                     true
                 }
                 R.id.about -> {
                     val frag = AboutFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
                     true
                 }
                 else ->
                     false
             }
-
         }
 
-        val frag = HomeFragment()
+        val frag = AboutFragment()
         supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-
     }
 
     fun getCurrentUser(): FirebaseUser? {
@@ -81,8 +80,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun mostrarPaginaProduto(produto: Map<String, Any>){
-        //val frag = DetailsFragment()
-        //supportFragmentManager.beginTransaction().replace(R.id.productContainer, frag).commit()
+        val i = Intent(this, ProductPageActivity::class.java)
+        for(prod in produto){
+            i.putExtra(prod.key, prod.value.toString())
+        }
+        startActivity(i)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
