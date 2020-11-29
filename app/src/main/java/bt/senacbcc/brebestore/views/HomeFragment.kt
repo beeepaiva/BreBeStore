@@ -188,7 +188,7 @@ class HomeFragment : Fragment() {
         return View.OnClickListener { v ->
             val mainAct = activity as MainActivity
             mainAct.mostrarPaginaProduto(selectedProduct)
-            activity?.finish()
+            //activity?.finish()
         }
     }
 
@@ -199,7 +199,5 @@ class HomeFragment : Fragment() {
         Snackbar.make(coordinatorLayoutProduct, "Produto adicionado com sucesso ao carrinho!", Snackbar.LENGTH_LONG).show()
         }
     }
-
-
 }
 
