@@ -2,15 +2,19 @@ package bt.senacbcc.brebestore.views
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.room.Room
 import bt.senacbcc.brebestore.R
 import bt.senacbcc.brebestore.UIutils.alert
+import bt.senacbcc.brebestore.apis.ProductAPI
 import bt.senacbcc.brebestore.db.AppDatabase
 import bt.senacbcc.brebestore.model.Product
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_cartproduct.view.*
 import kotlinx.android.synthetic.main.card_product.view.*
@@ -18,6 +22,13 @@ import kotlinx.android.synthetic.main.card_product.view.card_body
 import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.fragment_cart.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import okhttp3.OkHttpClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 class CartFragment : Fragment() {
@@ -33,9 +44,7 @@ class CartFragment : Fragment() {
         refreshProducts(cartView)
 
         cartView.btnBuyCart.setOnClickListener {
-            alert("Parabéns!",
-                "Sua compra foi efetuada com sucesso. A Brebe Store agradece sua preferência.", cartView.context)
-            deleteAll(cartView)
+            updateUserHistory(cartView)
         }
 
         return cartView
@@ -117,5 +126,59 @@ class CartFragment : Fragment() {
         }
     }
 
+    fun updateUserHistory(cartView: View) {
+        Thread {
+            activity?.let{
+                val db = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
+                val productList = db.productDao().getAll()
 
+                // Custom timeout
+                val httpClient = OkHttpClient.Builder()
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .build()
+
+                val retrofit = Retrofit.Builder()
+                    .baseUrl("https://brebestore-ebbd1.firebaseio.com")
+                    .client(httpClient)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+                val api = retrofit.create(ProductAPI::class.java)
+
+                val auth = FirebaseAuth.getInstance()
+
+                val call = api.insert(auth.currentUser?.displayName, productList)
+
+                val callback = object: Callback<Void> {
+
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+
+                        if(response.isSuccessful) {
+                            alert("Parabéns!",
+                                "Sua compra foi efetuada com sucesso. A Brebe Store agradece sua preferência.", cartView.context)
+                            deleteAll(cartView)
+                        }
+                        else {
+                            Toast.makeText(cartView.context,
+                                "Connection error", Toast.LENGTH_LONG).show()
+                            // Check issue in the API response itself
+                            Log.e("API ERROR", response.errorBody().toString())
+                        }
+
+                    }
+
+                    // Check issue in calling the API/getting a response from it
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+
+                        Toast.makeText(cartView.context,
+                            "Connection error", Toast.LENGTH_LONG).show()
+                        Log.e("ProductListActivity", "getAllProducts", t) // tag (Activity), msg (Method), t
+                    }
+                }
+
+                call.enqueue(callback)
+            }
+        }.start()
+    }
 }
