@@ -34,7 +34,7 @@
     <string name="close_menu">Fechar Menu</string>
 
     <!--Home CARD -->
-    <string name="buy">Comprar</string>
+    <string name="add">Adicionar ao carrinho</string>
     <string name="product">Produto</string>
     <string name="price">Preço</string>
     <string name="desc">Descrição</string>
@@ -42,5 +42,6 @@
     <string name="masculino">Masculino</string>
 
     <string name="remove">Remover</string>
+    <string name="buy">Comprar</string>
 
 </resources>

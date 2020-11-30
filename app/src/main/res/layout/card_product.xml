@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/keyline_5"
                 android:layout_marginBottom="@dimen/keyline_2"
-                android:text="@string/buy"
+                android:text="@string/add"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
