@@ -6,9 +6,9 @@ import retrofit2.http.*
 
 interface ProductAPI {
 
-    @GET("/users/{name}/history.json")
-    fun getAll(): Call<List<Product>>
+    @GET("/users/{name}/history")
+    fun getAll(@Path("name") name : String?): Call<List<Product>>
 
     @POST("/users/{name}/history.json")
-    fun insert(@Path("name") name : String?, @Body purchase: List<Product>): Call<Void>
+    fun insert(@Path("name") name : String?, @Body purchase: Product): Call<Void>
 }

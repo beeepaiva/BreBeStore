@@ -148,37 +148,42 @@ class CartFragment : Fragment() {
 
                 val auth = FirebaseAuth.getInstance()
 
-                val call = api.insert(auth.currentUser?.displayName, productList)
+                var count = 0
+                for (product in productList) {
+                    val call = api.insert(auth.currentUser?.displayName, product)
 
-                val callback = object: Callback<Void> {
+                    val callback = object: Callback<Void> {
 
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
 
-                        if(response.isSuccessful) {
-                            alert("Parabéns!",
-                                "Sua compra foi efetuada com sucesso. A Brebe Store agradece sua preferência.", cartView.context)
-                            deleteAll(cartView)
+                            if(response.isSuccessful) {
+                                count++
+                                if(count == productList.size) {
+                                    alert("Parabéns!",
+                                        "Sua compra foi efetuada com sucesso. A Brebe Store agradece sua preferência.", cartView.context)
+                                    deleteAll(cartView)
+                                }
+                            } else {
+                                Toast.makeText(cartView.context,
+                                    "Connection error", Toast.LENGTH_LONG).show()
+                                // Check issue in the API response itself
+                                Log.e("API ERROR", response.errorBody().toString())
+                            }
+
                         }
-                        else {
+
+                        // Check issue in calling the API/getting a response from it
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+
                             Toast.makeText(cartView.context,
                                 "Connection error", Toast.LENGTH_LONG).show()
-                            // Check issue in the API response itself
-                            Log.e("API ERROR", response.errorBody().toString())
+                            Log.e("ProductListActivity", "getAllProducts", t) // tag (Activity), msg (Method), t
                         }
-
                     }
-
-                    // Check issue in calling the API/getting a response from it
-                    override fun onFailure(call: Call<Void>, t: Throwable) {
-
-                        Toast.makeText(cartView.context,
-                            "Connection error", Toast.LENGTH_LONG).show()
-                        Log.e("ProductListActivity", "getAllProducts", t) // tag (Activity), msg (Method), t
-                    }
+                    call.enqueue(callback)
                 }
-
-                call.enqueue(callback)
             }
+
         }.start()
     }
 }
