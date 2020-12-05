@@ -12,6 +12,11 @@ interface ProductDao {
     @Insert()
     fun insert(product: Product)
 
+    //Inserindo conforme quantidade
+    @Query("UPDATE Product SET qtd = :qtd WHERE idFB = :id")
+    fun insertMore(qtd: Int, id: Int)
+
+
     @Update
     fun edit(product: Product)
 

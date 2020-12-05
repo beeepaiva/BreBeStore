@@ -177,7 +177,7 @@ class HomeFragment : Fragment() {
         return View.OnClickListener { v ->
             Thread{
             val produtoSelecionado =
-                Product(name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["preco"].toString().toFloat(), qtd = 1, urlImg = selectedProduct["urlImg"].toString())
+                Product(idFB = selectedProduct["id"].toString().toInt(), name = selectedProduct["nome"].toString(), desc = selectedProduct["desc"].toString(), price = selectedProduct["preco"].toString().toFloat(), qtd = 1, urlImg = selectedProduct["urlImg"].toString())
                 insertProduct(produtoSelecionado)
             }.start()
         }
@@ -195,7 +195,28 @@ class HomeFragment : Fragment() {
     fun insertProduct(product: Product){
         activity?.let{
         val roomdb = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
-        roomdb.productDao().insert(product)
+            val allProducts = roomdb.productDao().getAll()
+            val qtdTotal = allProducts.size
+            var i = 1
+            var purch = false
+            if(allProducts.isNotEmpty()){
+                for(prd in allProducts){
+                    //Se o idFb for igual adiciona na qtd
+                    if(prd.idFB == product.idFB && !purch){
+                        roomdb.productDao().insertMore(1+prd.qtd.toString().toInt(), prd.idFB )
+                        purch = true
+                    }
+                    else if (prd.idFB != product.idFB && !purch){
+                        if(i == qtdTotal){
+                            roomdb.productDao().insert(product)
+                            purch = true
+                        }
+                    }
+                    i++
+                }
+            }else{
+                roomdb.productDao().insert(product)
+            }
         Snackbar.make(coordinatorLayoutProduct, "Produto adicionado com sucesso ao carrinho!", Snackbar.LENGTH_LONG).show()
         }
     }

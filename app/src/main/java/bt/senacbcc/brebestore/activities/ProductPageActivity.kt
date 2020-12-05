@@ -47,26 +47,62 @@ class ProductPageActivity : AppCompatActivity() {
 
 
         btnBuy.setOnClickListener{
+            val idprod = id.toString().toInt()
+            val qtdprod= etQtd.text.toString().toInt()
             val prod =  Product(
                 name = nome.toString(),
                 desc = desc.toString(),
                 price = preco.toString().toFloat(),
                 qtd = etQtd.text.toString().toInt(),
-                urlImg = urlImg.toString()
+                urlImg = urlImg.toString(),
+                idFB = id.toString().toInt()
             )
-            buyItem(prod)
+            buyItem(idprod, qtdprod, prod)
         }
     }
 
     //Item vai direto pro carrinho
-    private fun buyItem(produto: Product){
+    private fun buyItem(id: Int, qtd: Int, prod: Product){
         Thread{
-            insertProduct(produto)
+            insertProduct(id, qtd, prod)
             finish()
         }.start()
     }
 
-    fun insertProduct(product: Product){
+    fun insertProduct(id: Int, qtd: Int, prod: Product){
+        val roomdb = Room.databaseBuilder(this, AppDatabase::class.java, "AppDB").build()
+        val allProducts = roomdb.productDao().getAll()
+        val qtdItemsCart = allProducts.size
+        var i = 1
+        var purch = false
+        if(allProducts.isNotEmpty()){
+            for (product in allProducts){
+                if(product.idFB == id && !purch){
+                    roomdb.productDao().insertMore(qtd+product.qtd.toString().toInt(), id)
+                    purch = true
+                }
+                else if(product.idFB != id  && !purch){
+                    if(i == qtdItemsCart){
+                        roomdb.productDao().insert(product)
+                        purch = true
+                    }
+                }
+                i++
+            }
+        }else{
+            roomdb.productDao().insert(prod)
+        }
+
+
+        Snackbar.make(
+            coordinatorLayoutPageProduct,
+            "Produto adicionado com sucesso ao carrinho!",
+            Snackbar.LENGTH_LONG
+        ).show()
+        Thread.sleep(2000)
+    }
+
+    /*fun insertProduct(product: Product){
         val roomdb = Room.databaseBuilder(this, AppDatabase::class.java, "AppDB").build()
         roomdb.productDao().insert(product)
         Snackbar.make(
@@ -76,7 +112,7 @@ class ProductPageActivity : AppCompatActivity() {
         ).show()
         Thread.sleep(2000)
 
-    }
+    }*/
 
 
 

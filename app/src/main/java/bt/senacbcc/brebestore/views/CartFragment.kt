@@ -102,7 +102,7 @@ class CartFragment : Fragment() {
         return View.OnClickListener { _ ->
             Thread{
                 val produtoSelecionado =
-                    Product(name = product.name, desc = product.desc, price = product.price, id = product.id, qtd =product.qtd?.minus(1), urlImg = "")
+                    Product(idFB = product.id.toString().toInt(),  id= product.id.toString().toInt(), name = product.name, desc = product.desc, price = product.price, qtd =product.qtd?.minus(1), urlImg = "")
                 deleteProduct(produtoSelecionado)
                 refreshProducts(cartView)
             }.start()
