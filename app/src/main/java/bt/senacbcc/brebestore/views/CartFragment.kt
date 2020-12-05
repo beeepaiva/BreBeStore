@@ -84,8 +84,11 @@ class CartFragment : Fragment() {
             )
             card.card_titleCart.text = product.name.capitalize()
             card.card_bodyCart.text = "R$ " + product.price
+            card.txtQtdItens.text = product.qtd.toString() + " item(s)"
 
-            total += product.price;
+            product.qtd.let {
+                total += product.price * it.toString().toInt();
+            }
 
             val imgUrl = product.urlImg.toString()
             Picasso.get().load(imgUrl).into(card.card_headerCart)

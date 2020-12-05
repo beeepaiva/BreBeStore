@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val frag = AboutFragment()
+        val frag = HomeFragment()
         supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
     }
 

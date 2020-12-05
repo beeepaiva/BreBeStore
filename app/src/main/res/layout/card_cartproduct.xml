@@ -52,16 +52,16 @@
 
             <TextView
                 android:id="@+id/card_bodyCart"
-                android:layout_width="178dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="12dp"
+                android:layout_width="117dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="@dimen/keyline_5"
                 android:text="@string/app_name"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/material_on_surface_emphasis_medium"
                 app:firstBaselineToTopHeight="@dimen/keyline_5"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.558"
+                app:layout_constraintHorizontal_bias="0.23"
                 app:layout_constraintStart_toEndOf="@+id/card_headerCart"
                 app:layout_constraintTop_toBottomOf="@id/card_titleCart" />
 
@@ -75,10 +75,26 @@
                 android:text="@string/remove"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.837"
+                app:layout_constraintHorizontal_bias="0.939"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_bodyCart"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/txtQtdItens"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="qtd"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/material_on_surface_emphasis_medium"
+                app:firstBaselineToTopHeight="@dimen/keyline_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnRemoveItem"
+                app:layout_constraintHorizontal_bias="0.193"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_headerCart"
+                app:layout_constraintVertical_bias="0.111" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
