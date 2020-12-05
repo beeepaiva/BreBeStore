@@ -102,7 +102,7 @@ class CartFragment : Fragment() {
         return View.OnClickListener { _ ->
             Thread{
                 val produtoSelecionado =
-                    Product(idFB = product.id.toString().toInt(),  id= product.id.toString().toInt(), name = product.name, desc = product.desc, price = product.price, qtd =product.qtd?.minus(1), urlImg = "")
+                    Product(idFB = product.id.toString().toInt(),  id= product.id.toString().toInt(), name = product.name, desc = product.desc, price = product.price, qtd =product.qtd , urlImg = "")
                 deleteProduct(produtoSelecionado)
                 refreshProducts(cartView)
             }.start()
@@ -116,7 +116,7 @@ class CartFragment : Fragment() {
             activity?.let {
                 val db = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
                 val all = db.productDao().getAll()
-                for (product in all){ deleteProduct(product) }
+                for (product in all){ deleteProduct(product)}
                 refreshProducts(cartView)
             }
         }.start()
@@ -125,7 +125,12 @@ class CartFragment : Fragment() {
     fun deleteProduct(product: Product){
         activity?.let {
             val db = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
-            db.productDao().delete(product)
+            if(product.qtd.toString().toInt() > 1){
+                val qtdFinal = product.qtd.toString().toInt() - 1
+                db.productDao().deleteUnity(product.id.toString().toInt(), qtdFinal)
+            }else{
+              db.productDao().delete(product)
+            }
         }
     }
 

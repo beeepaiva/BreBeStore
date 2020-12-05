@@ -16,10 +16,12 @@ interface ProductDao {
     @Query("UPDATE Product SET qtd = :qtd WHERE idFB = :id")
     fun insertMore(qtd: Int, id: Int)
 
-
     @Update
     fun edit(product: Product)
 
     @Delete
     fun delete(product: Product)
+
+    @Query("UPDATE Product SET qtd = :qtd WHERE id = :id")
+    fun deleteUnity(id: Int, qtd: Int)
 }

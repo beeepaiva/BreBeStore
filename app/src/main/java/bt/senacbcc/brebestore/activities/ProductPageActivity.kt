@@ -93,28 +93,13 @@ class ProductPageActivity : AppCompatActivity() {
             roomdb.productDao().insert(prod)
         }
 
-
         Snackbar.make(
             coordinatorLayoutPageProduct,
             "Produto adicionado com sucesso ao carrinho!",
             Snackbar.LENGTH_LONG
         ).show()
-        Thread.sleep(2000)
+        Thread.sleep(800)
     }
-
-    /*fun insertProduct(product: Product){
-        val roomdb = Room.databaseBuilder(this, AppDatabase::class.java, "AppDB").build()
-        roomdb.productDao().insert(product)
-        Snackbar.make(
-            coordinatorLayoutPageProduct,
-            "Produto adicionado com sucesso ao carrinho!",
-            Snackbar.LENGTH_LONG
-        ).show()
-        Thread.sleep(2000)
-
-    }*/
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val i = Intent(this, MainActivity::class.java)
