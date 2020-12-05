@@ -3,6 +3,7 @@ package bt.senacbcc.brebestore.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import bt.senacbcc.brebestore.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_product.view.*
@@ -39,5 +40,12 @@ class ProductPageActivity : AppCompatActivity() {
                  teste = qtdm.toInt() - 1
             etQtd.setText(Integer.toString(teste))
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val i = Intent(this, MainActivity::class.java)
+        i.putExtra("fragment", "home")
+        startActivity(i)
+        return true
     }
 }

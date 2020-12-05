@@ -40,32 +40,47 @@ class MainActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener {
             drawerLayout.closeDrawers()
 
-            if(it.itemId == R.id.home){
-                val frag = HomeFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
+            when (it.itemId) {
+                R.id.home -> {
+                    val frag = HomeFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
+                    true
+                }
+                R.id.cart -> {
+                    val frag = CartFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
+                    true
+                }
+                R.id.profile -> {
+                    val frag = ProfileActivity()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
+                    true
+                }
+                R.id.about -> {
+                    val frag = AboutFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag)
+                        .commit()
+                    true
+                }
+                else ->
+                    false
             }
-            else if(it.itemId == R.id.cart){
-                val frag = CartFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            else if (it.itemId == R.id.profile) {
-                val frag = ProfileActivity()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            else if (it.itemId == R.id.about) {
-                val frag = AboutFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-                true
-            }
-            false
         }
 
-        val frag = HomeFragment()
+        val frag = AboutFragment()
         supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        val fragmentToLoad = intent.getStringExtra("fragment") // Checks which fragment needs to be loaded on resume
+        if (fragmentToLoad == "home") {
+            val frag = HomeFragment()
+            supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
+        }
     }
 
     fun getCurrentUser(): FirebaseUser? {

@@ -90,10 +90,15 @@ class ProfileActivity : Fragment() {
 
         }
 
-        profileView.btnpurchHist.setOnClickListener{
-            //Fazer lógica de abrir página com historico de compras
+        profileView.btnPurchHist.setOnClickListener{
+            val frag = HistoryFragment()
+            activity?.let {
+                it.supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragContainer, frag)
+                    .commit()
+            }
         }
-
         return profileView
     }
 
