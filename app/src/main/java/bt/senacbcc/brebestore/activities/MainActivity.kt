@@ -74,15 +74,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
     }
 
-    override fun onResume() {
-        super.onResume()
-        val fragmentToLoad = intent.getStringExtra("fragment") // Checks which fragment needs to be loaded on resume
-        if (fragmentToLoad == "home") {
-            val frag = HomeFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.fragContainer, frag).commit()
-        }
-    }
-
     fun getCurrentUser(): FirebaseUser? {
         val aut = FirebaseAuth.getInstance()
         return aut.currentUser

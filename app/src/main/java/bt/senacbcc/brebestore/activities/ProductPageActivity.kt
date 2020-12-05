@@ -101,12 +101,9 @@ class ProductPageActivity : AppCompatActivity() {
         Thread.sleep(800)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val i = Intent(this, MainActivity::class.java)
-        i.putExtra("fragment", "home")
-        startActivity(i)
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
         return true
     }
-
 
 }
