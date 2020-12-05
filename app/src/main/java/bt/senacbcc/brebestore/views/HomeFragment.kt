@@ -194,7 +194,7 @@ class HomeFragment : Fragment() {
 
     fun insertProduct(product: Product){
         activity?.let{
-        val roomdb = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
+            val roomdb = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
             val allProducts = roomdb.productDao().getAll()
             val qtdTotal = allProducts.size
             var i = 1

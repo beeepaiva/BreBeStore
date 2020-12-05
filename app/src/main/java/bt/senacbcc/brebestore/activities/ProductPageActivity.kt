@@ -83,7 +83,7 @@ class ProductPageActivity : AppCompatActivity() {
                 }
                 else if(product.idFB != id  && !purch){
                     if(i == qtdItemsCart){
-                        roomdb.productDao().insert(product)
+                        roomdb.productDao().insert(prod)
                         purch = true
                     }
                 }
