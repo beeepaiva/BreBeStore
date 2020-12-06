@@ -116,10 +116,16 @@ class CartFragment : Fragment() {
             activity?.let {
                 val db = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
                 val all = db.productDao().getAll()
-                for (product in all){ deleteProduct(product)}
+                for (product in all){ delAllProductsBuyed(product)}
                 refreshProducts(cartView)
             }
         }.start()
+    }
+    fun delAllProductsBuyed(product: Product){
+        activity?.let {
+            val db = Room.databaseBuilder(it, AppDatabase::class.java, "AppDB").build()
+            db.productDao().delete(product)
+        }
     }
 
     fun deleteProduct(product: Product){
@@ -158,7 +164,7 @@ class CartFragment : Fragment() {
 
                 var count = 0
                 for (product in productList) {
-                    val call = api.insert(auth.currentUser?.displayName, product)
+                    val call = api.insert(auth.currentUser?.uid, product)
 
                     val callback = object: Callback<Void> {
 

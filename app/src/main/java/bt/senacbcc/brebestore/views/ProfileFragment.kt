@@ -30,11 +30,11 @@ class ProfileActivity : Fragment() {
             // Name, email address, and profile photo Url
             val name = it.displayName
             val email = it.email
-            val pht = it.photoUrl
+            //val pht = it.photoUrl
 
             profileView.txtName.setText(name)
             profileView.txtEmail.setText(email)
-            profileView.imgPerfil.setImageURI(pht)
+            //profileView.imgPerfil.setImageURI(pht)
         }
 
         profileView.btnLogout.setOnClickListener {
