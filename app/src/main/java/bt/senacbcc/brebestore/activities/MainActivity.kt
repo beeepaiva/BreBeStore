@@ -6,7 +6,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import bt.senacbcc.brebestore.R
-import bt.senacbcc.brebestore.views.*
+import bt.senacbcc.brebestore.views.AboutFragment
+import bt.senacbcc.brebestore.views.CartFragment
+import bt.senacbcc.brebestore.views.HomeFragment
+import bt.senacbcc.brebestore.views.ProfileActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
