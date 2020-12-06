@@ -44,4 +44,8 @@
     <string name="remove">Remover</string>
     <string name="buy">Comprar</string>
 
+    <string name="total">Total: </string>
+    <string name="empty_cart">Seu carrinho está vazio :(</string>
+    <string name="search">Pesquisar</string>
+
 </resources>

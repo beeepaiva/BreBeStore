@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_brebe_background"
                 app:tint="?attr/colorSurface"
-                app:tintMode="multiply"
+                app:tintMode="screen"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -41,6 +41,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/product"
                 android:textSize="@dimen/keyline_5"
+                android:textAlignment="textStart"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="@color/material_on_surface_emphasis_high_type"
                 app:firstBaselineToTopHeight="40dp"
@@ -54,14 +55,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/keyline_4"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="@dimen/keyline_5"
                 android:text="@string/price"
-                android:textSize="@dimen/keyline_4"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/material_on_surface_emphasis_medium"
+                android:textSize="@dimen/keyline_4"
+                android:textAlignment="textStart"
                 app:firstBaselineToTopHeight="@dimen/keyline_5"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_title" />
 

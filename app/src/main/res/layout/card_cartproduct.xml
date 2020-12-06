@@ -25,6 +25,7 @@
                 android:id="@+id/card_headerCart"
                 android:layout_width="138dp"
                 android:layout_height="128dp"
+                android:backgroundTint="#E4DBDB"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +33,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_brebe_background"
-                app:tint="?attr/colorSurface"
-                app:tintMode="multiply"
+                app:tint="?android:attr/windowBackground"
+                app:tintMode="screen"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -42,6 +43,7 @@
                 android:layout_height="85dp"
                 android:layout_marginStart="16dp"
                 android:text="@string/app_name"
+                android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textColor="@color/material_on_surface_emphasis_high_type"
                 android:textSize="@dimen/keyline_5"
@@ -74,6 +76,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:text="qtd"
+                android:textAlignment="textStart"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/material_on_surface_emphasis_medium"
                 android:textSize="@dimen/keyline_3"
@@ -90,6 +93,7 @@
                 android:layout_width="117dp"
                 android:layout_height="32dp"
                 android:text="@string/app_name"
+                android:textAlignment="textEnd"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/material_on_surface_emphasis_medium"
                 android:textSize="@dimen/keyline_3"

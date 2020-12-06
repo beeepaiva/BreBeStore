@@ -155,7 +155,7 @@ class HomeFragment : Fragment() {
     fun updateUI(productMap: Map<String, Any>){
 
         val productData = productMap
-        val card = layoutInflater.inflate(
+        val card = layoutInflater?.inflate(
             R.layout.card_product,
             productContainer,
             false

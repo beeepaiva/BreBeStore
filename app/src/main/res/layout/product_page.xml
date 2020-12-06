@@ -22,7 +22,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_brebe_background"
                 app:tint="?attr/colorSurface"
-                app:tintMode="multiply"
+                app:tintMode="screen"
                 tools:ignore="ContentDescription" />
 
     <TextView
@@ -32,6 +32,7 @@
         android:layout_marginTop="36dp"
         android:text="@string/product"
         android:textSize="@dimen/keyline_5"
+        android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceHeadline6"
         android:textColor="@color/material_on_surface_emphasis_high_type"
         app:firstBaselineToTopHeight="40dp"
@@ -49,6 +50,7 @@
         android:layout_marginEnd="@dimen/keyline_5"
         android:text="@string/desc"
         android:textSize="@dimen/keyline_4"
+        android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceBody2"
         android:textColor="@color/material_on_surface_emphasis_medium"
         app:firstBaselineToTopHeight="@dimen/keyline_5"
@@ -69,6 +71,7 @@
         android:textAppearance="?attr/textAppearanceBody2"
         android:textColor="@color/material_on_surface_emphasis_medium"
         app:firstBaselineToTopHeight="@dimen/keyline_5"
+        android:textAlignment="textEnd"
         app:layout_constraintBottom_toTopOf="@+id/btnBuy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -82,10 +85,10 @@
         android:layout_width="194dp"
         android:layout_height="46dp"
         android:text="@string/add"
-        android:textColor="@color/common_google_signin_btn_text_light_pressed"
         android:textSize="@dimen/keyline_3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="?attr/colorSurface" />
 
     <EditText
         android:id="@+id/etQtd"
@@ -117,5 +120,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_round_remove_24" />
+
+    <ProgressBar
+        android:id="@+id/progressBarProductPage"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
