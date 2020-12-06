@@ -51,7 +51,7 @@ class HistoryFragment : Fragment() {
                     val objectMap : Map<String, Any>
                     objectMap = historyPurch as Map<String, Any>
 
-                    historyContainer.removeAllViews()
+                    historyContainer?.removeAllViews()
                     for(v in objectMap){
                         updateUI(v)
                     }
@@ -80,6 +80,7 @@ class HistoryFragment : Fragment() {
         card.txtTitle.text = (productMap.value as HashMap<*,*>).get("name").toString().capitalize()
         card.txtPrice.text = "R$" + (productMap.value as HashMap<*,*>).get("price").toString()
         card.txtDesc.text = (productMap.value as HashMap<*,*>).get("desc").toString().capitalize()
+        card.txtQtdComprada.text = (productMap.value as HashMap<*,*>).get("qtd").toString() + " comprados"
 
         historyContainer.addView(card)
 

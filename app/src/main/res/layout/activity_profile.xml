@@ -68,6 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/keyline_3"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -77,6 +78,7 @@
             android:enabled="false"
             android:hint="Email"
             android:text="Email"
+            android:textSize="@dimen/keyline_3"
             android:textColor="@color/textPrimary" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:text="@string/purshasedHistory"
-        android:textSize="18sp"
+        android:textSize="@dimen/keyline_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layoutDirection="locale"
         android:text="@string/logout"
+        android:textSize="@dimen/keyline_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -111,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Salvar"
+        android:textSize="@dimen/keyline_3"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btnPurchHist"
         app:layout_constraintEnd_toEndOf="parent"
