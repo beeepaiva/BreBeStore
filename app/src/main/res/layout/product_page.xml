@@ -12,18 +12,18 @@
     android:id="@+id/coordinatorLayoutPageProduct">
 
 
-            <ImageView
-                android:id="@+id/imgProduto"
-                android:layout_width="match_parent"
-                android:layout_height="192dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_brebe_background"
-                app:tint="?attr/colorSurface"
-                app:tintMode="screen"
-                tools:ignore="ContentDescription" />
+    <ImageView
+        android:id="@+id/imgProduto"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_brebe_background"
+        app:tint="?attr/colorSurface"
+        app:tintMode="multiply"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/nomeProduto"

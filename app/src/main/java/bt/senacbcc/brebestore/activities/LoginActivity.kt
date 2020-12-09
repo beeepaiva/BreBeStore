@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setLogo(R.drawable.ic_round_shopping_cart_24)
+                .setLogo(R.drawable.ic_baseline_shopping_cart_56)
                 .build(),
             RC_SIGN_IN)
     }

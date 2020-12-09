@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_brebe_background"
                 app:tint="?attr/colorSurface"
-                app:tintMode="screen"
+                app:tintMode="multiply"
                 tools:ignore="ContentDescription" />
 
             <TextView
